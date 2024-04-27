@@ -17,6 +17,8 @@ def status():
     return {
         "status": "OK",
     }
+
+
 @app_views.route("/stats", strict_slashes=False, methods=["GET"])
 def stats():
     amenities = storage.count(Amenity)

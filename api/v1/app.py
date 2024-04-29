@@ -11,11 +11,6 @@ app = Flask(__name__)
 app.register_blueprint(app_views, url_prefix="/api/v1")
 
 
-@app.teardown_appcontext
-def close(ctx):
-    storage.close()
-
-
 @app.errorhandler(404)
 def page_not_found(e):
     return {
@@ -24,11 +19,9 @@ def page_not_found(e):
     }, 404
 
 
-app.config['SWAGGER'] = {
-    'title': 'AirBnB clone - RESTful API',
-    'description': 'This is the api that was created for the hbnb restful api project,\
-    all the documentation will be shown below',
-    'uiversion': 3}
+@app.teardown_appcontext
+def close(ctx):
+    storage.close()
 
 
 if os.getenv("HBNB_API_HOST"):

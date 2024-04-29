@@ -28,15 +28,14 @@ class User(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes user"""
         super().__init__(*args, **kwargs)
-        self.password = md5(password.encode()).hexdigest()
-       ''' if 'password' in kwargs:
-            self.set_password(kwargs['password'])'''
+        if 'password' in kwargs:
+            self.set_password(kwargs['password'])
 
-    '''def set_password(self, password):
+    def set_password(self, password):
         """hashes the password with MD5"""
-        self.password = hashlib.md5(password.encode()).hexdigest()'''
-'''
+        self.password = md5(password.encode()).hexdigest()
+
     def to_dict(self, include_sensitive=False):
         """convert user instance into dict format"""
         user_dict = super().to_dict(include_sensitive=include_sensitive)
-        return user_dict'''
+        return user_dict

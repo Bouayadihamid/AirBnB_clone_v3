@@ -28,7 +28,7 @@ class User(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes user"""
         super().__init__(*args, **kwargs)
-        if 'password' in kwargs:
+        '''if 'password' in kwargs:
             self.set_password(kwargs['password'])
 
     def set_password(self, password):
@@ -38,9 +38,9 @@ class User(BaseModel, Base):
     def to_dict(self, include_sensitive=False):
         """convert user instance into dict format"""
         user_dict = super().to_dict(include_sensitive=include_sensitive)
-        return user_dict
-    '''def __setattr__(self, k, v):
+        return user_dict'''
+    def __setattr__(self, k, v):
         """sets user pasword"""
         if k == "password":
             v = hashlib.md5(v.encode()).hexdigest()
-        super().__setattr__(k, v)'''
+        super().__setattr__(k, v)

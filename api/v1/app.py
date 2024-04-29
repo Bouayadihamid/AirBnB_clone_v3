@@ -11,17 +11,17 @@ app = Flask(__name__)
 app.register_blueprint(app_views, url_prefix="/api/v1")
 
 
+@app.teardown_appcontext
+def close(ctx):
+    storage.close()
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return {
         "error": "Not found"
 
     }, 404
-
-
-@app.teardown_appcontext
-def close(ctx):
-    storage.close()
 
 
 app.config['SWAGGER'] = {

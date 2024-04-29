@@ -155,6 +155,6 @@ No known bugs at this time.
 
 ## Authors
 Bouayadi Hamid - [Github] (https://github.com/Bouayadihamid) / [Email] (Bouayadihamid@gmail.com) 
-
+Abdelaaziz Khouda - [Github] (https://github.com/abdelaaziz11) / [Email] (abdelkhouda055@gmail.com) 
 ## License
 Public Domain. No copy write protection. 

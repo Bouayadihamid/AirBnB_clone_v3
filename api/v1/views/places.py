@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-This file contains the Place module
-"""
+"""Places"""
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
 from models import storage
@@ -99,6 +97,11 @@ def search_places_by_id():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
     data = request.get_json()
+
+    if data and len(data):
+        states = data.get('states', None)
+        cities = data.get('cities', None)
+        amenities = data.get('amenities', None)
 
     if data and len(data):
         states = data.get('states', None)
